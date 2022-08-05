@@ -55,7 +55,7 @@ const Navigate = () => {
               textDecoration: "none"
             }}
           >
-            Stock Manager
+            Inventory Manager
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -113,7 +113,7 @@ const Navigate = () => {
               textDecoration: "none"
             }}
           >
-            Stock Manager
+            Inventory Manager
           </Typography>
           
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
