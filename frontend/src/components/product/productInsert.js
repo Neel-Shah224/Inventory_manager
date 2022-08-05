@@ -1,6 +1,7 @@
 import { TextField, Grid, Button, Box,RadioGroup,FormControlLabel,Radio } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
+import backenURL from '../../utils/backend';
 
 function ProductInsertPage({ callback, row, task }) {
     const [name, setName] = useState(row ? row.name : '');
@@ -24,7 +25,7 @@ function ProductInsertPage({ callback, row, task }) {
         if (task === "Update") {
             p_id = row.p_id;
         }
-        const res = await fetch('/product',
+        const res = await fetch(backenURL+'/product',
             {
                 method: task === "Add" ? "POST" : "PATCH",
                 headers: {

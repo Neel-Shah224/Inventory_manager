@@ -29,6 +29,7 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 //imported pages
 import GeneratePurchaseOrder from "./generatePurchaseOrder";
+import backenURL from "../../utils/backend";
 
 function PurchaseOrders() {
   //purchase orders data's
@@ -51,7 +52,7 @@ function PurchaseOrders() {
     setDelOpen(false);
   };
   async function DeletePurchaseOrder() {
-    const res = await fetch("/purchaseorder", {
+    const res = await fetch(backenURL+"/purchaseorder", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +94,7 @@ function PurchaseOrders() {
 
   // function to get all list of Purchase Orders from database
   async function getMyPurchaseOrders() {
-    const res = await fetch("/purchaseorder", {
+    const res = await fetch(backenURL+"/purchaseorder", {
       method: "GET",
       headers: {
         Accept: "application/json",

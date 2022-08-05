@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {  Table, TableBody, TableCell, Typography } from '@mui/material';
 import { TableContainer, TableHead, TableRow,  Paper } from '@mui/material';
+import backenURL from '../../utils/backend';
 
 
 
@@ -12,7 +13,7 @@ function AvailableStock(){
 
   // function to get all list of customers in database
   async function getMyStock() {
-    const res = await fetch('/stock',
+    const res = await fetch(backenURL+'/stock',
       {
         method: "GET",
         headers: {

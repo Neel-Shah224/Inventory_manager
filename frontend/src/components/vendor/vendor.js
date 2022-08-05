@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 //imported pages
 import VendorInsertPage from './vendorInsert';
+import backenURL from '../../utils/backend';
 
 function VendorPage() {
 
@@ -34,7 +35,7 @@ function VendorPage() {
     setDelOpen(false);
   };
   async function DeleteVendor() {
-    const res = await fetch('/vendor',
+    const res = await fetch(backenURL+'/vendor',
       {
         method: "DELETE",
         headers: {
@@ -96,7 +97,7 @@ function VendorPage() {
 
   // function to get all list of vendors in database
   async function getMyVendors() {
-    const res = await fetch('/vendor',
+    const res = await fetch(backenURL+'/vendor',
       {
         method: "GET",
         headers: {

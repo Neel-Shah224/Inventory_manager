@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 //imported pages
 import ProductInsertPage from './productInsert';
+import backenURL from '../../utils/backend';
 
 function ProductPage() {
 
@@ -34,7 +35,7 @@ function ProductPage() {
     setDelOpen(false);
   };
   async function DeleteProduct() {
-    const res = await fetch('/product',
+    const res = await fetch(backenURL+'/product',
       {
         method: "DELETE",
         headers: {
@@ -96,7 +97,7 @@ function ProductPage() {
 
   // function to get all list of products in database
   async function getMyProducts() {
-    const res = await fetch('/product',
+    const res = await fetch(backenURL+'/product',
       {
         method: "GET",
         headers: {

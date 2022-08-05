@@ -15,6 +15,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import PurchaseList from "./purchaseList";
 import VendorInsertPage from "../vendor/vendorInsert"
 import ProductInsertPage from '../product/productInsert';
+import backenURL from "../../utils/backend";
 const re = /^[0-9\b]+$/;
 function GeneratePurchaseOrder({callback}) {
   const [vendorList, setVendorList] = useState([]);
@@ -237,7 +238,7 @@ function GeneratePurchaseOrder({callback}) {
       console.log(item)
     })
     console.log(list)
-    const res = await fetch("/purchaseorder", {
+    const res = await fetch(backenURL+"/purchaseorder", {
       method:"POST",
       headers: {
         "Content-Type": "application/json",

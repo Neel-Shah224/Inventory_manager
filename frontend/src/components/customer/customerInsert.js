@@ -1,6 +1,7 @@
 import {  TextField, Grid, Button, Box } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
+import backenURL from '../../utils/backend';
 
 
 const re = /^[0-9\b]+$/;
@@ -25,7 +26,7 @@ function CustomerInsertPage({callback,row,task}) {
         if(task==="Update"){
             c_id=row.c_id;
         }
-        const res = await fetch('/customer',
+        const res = await fetch(backenURL+'/customer',
             {
                 method: task==="Add"?"POST":"PATCH",
                 headers: {

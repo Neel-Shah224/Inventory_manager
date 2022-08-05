@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 //imported pages
 import CustomerInsertPage from './customerInsert';
+import backenURL from '../../utils/backend';
 
 function CustomerPage() {
 
@@ -32,7 +33,7 @@ function CustomerPage() {
     setDelOpen(false);
   };
   async function DeleteCustomer() {
-    const res = await fetch('/customer',
+    const res = await fetch(backenURL+'/customer',
       {
         method: "DELETE",
         headers: {
@@ -94,7 +95,7 @@ function CustomerPage() {
 
   // function to get all list of customers in database
   async function getMyCustomer() {
-    const res = await fetch('/customer',
+    const res = await fetch(backenURL+'/customer',
       {
         method: "GET",
         headers: {

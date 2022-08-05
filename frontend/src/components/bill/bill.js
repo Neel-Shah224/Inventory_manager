@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import backenURL from "../../utils/backend";
 import {
   Box,
   Collapse,
@@ -51,7 +52,7 @@ function Bill() {
     setDelOpen(false);
   };
   async function DeletePurchaseOrder() {
-    const res = await fetch("/sellingOrder", {
+    const res = await fetch(backenURL+"/sellingOrder", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +94,7 @@ function Bill() {
 
   // function to get all list of Purchase Orders from database
   async function getMySellingOrders() {
-    const res = await fetch("/sellingOrder", {
+    const res = await fetch(backenURL+"/sellingOrder", {
       method: "GET",
       headers: {
         Accept: "application/json",
