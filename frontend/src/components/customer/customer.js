@@ -10,7 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CustomerInsertPage from './customerInsert';
 import backenURL from '../../utils/backend';
 
-function CustomerPage() {
+function CustomerPage({setMessageContent}) {
 
   //customer data's
   const [mycustomers, setMyCustomers] = useState([])
@@ -44,8 +44,12 @@ function CustomerPage() {
     const data = await res.json()
     console.log(data);
     if (!data.error) {
+      setMessageContent({message:"Customer Deleted Successfully",severity:"success",open:true});
       setMyCustomers(mycustomers.filter((x) =>  x.c_id !== data.c_id ));
       handleDelClose()
+    }
+    else{
+      setMessageContent({message:data.error,severity:"error",open:true});
     }
   }
 
@@ -69,10 +73,12 @@ function CustomerPage() {
   function AddNewCustomer(error, newCustomer, task) {
     if (error) {
       //TODO: do needful to alert user about error
+      setMessageContent({message:error,severity:"error",open:true});
     }
     else {
       if (task === "Add") {
         setMyCustomers(mycustomers.concat(newCustomer))
+        setMessageContent({message:"New Customer Added Successfully",severity:"success",open:true});
       }
       else if (task === "Update") {
         var UpdatedMyCustomer = []
@@ -86,6 +92,7 @@ function CustomerPage() {
           }
         })
         setMyCustomers(UpdatedMyCustomer)
+        setMessageContent({message:"Customer Updated Successfully",severity:"success",open:true});
 
       }
       handleClose();

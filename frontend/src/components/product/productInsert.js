@@ -3,7 +3,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
 import backenURL from '../../utils/backend';
 
-function ProductInsertPage({ callback, row, task }) {
+function ProductInsertPage({ callback, row, task,setMessageContent }) {
     const [name, setName] = useState(row ? row.name : '');
     const [description, setDescription] = useState(row ? row.description : '');
     const [default_unit, setDefaultUnit] = useState(row ? row.default_unit : '');
@@ -13,11 +13,12 @@ function ProductInsertPage({ callback, row, task }) {
     async function handleClick(e) {
         e.preventDefault();
         if (name.length < 4) {
-            console.log('Enter Product name properly');
+            setMessageContent({message:"Enter Product name properly",severity:"error",open:true});
             return;
         }
         if (unit.length === 0) {
-            console.log('Enter Unit properly');
+            setMessageContent({message:"Enter Unit properly",severity:"error",open:true});
+           
             return;
         }
         console.log('ready to send data');

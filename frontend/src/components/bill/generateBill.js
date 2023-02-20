@@ -16,7 +16,7 @@ import {
   import CustomerInsertPage from "../customer/customerInsert"
 import backenURL from "../../utils/backend";
   const re = /^[0-9\b]+$/;
-  function GenerateSellingOrder({callback}) {
+  function GenerateSellingOrder({callback,setMessageContent}) {
     const [customerList, setCustomerList] = useState([]);
     const [productList, setProductList] = useState([]);
     const [c_id, setC_id] = useState(-1);
@@ -33,7 +33,7 @@ import backenURL from "../../utils/backend";
     function AddNewCustomer(error, newCustomer, task) {
         console.log(error+" - "+newCustomer+" - "+task);
       if (error) {
-        //TODO: do needful to alert user about error
+        setMessageContent({message:error,severity:"error",open:true});
       }
       else {
         if (task === "Add") {
@@ -190,22 +190,25 @@ import backenURL from "../../utils/backend";
       const mySet = new Set();
       mySet.clear()
       if (total <= 0) {
-        console.log("total can't be zero");
+        setMessageContent({message:"total can't be zero",severity:"error",open:true});
+        
         return;
       }
       if (!c_id || c_id===-1) {
-        console.log("enter details properly");
+        setMessageContent({message:"enter details properly",severity:"error",open:true});
+        
       }
 
       console.log(data)
       data.forEach((listItem) => {
         if (listItem.p_id === -1) {
-          console.log("Error: Each item must be filled else delete that field ");
+          setMessageContent({message:"Each item must be filled else delete that field",severity:"error",open:true});
+          
           flag = false;
           return;
         }
         if (mySet.has(listItem.p_id)) {
-          console.log("Error: one single entry for each item only");
+          setMessageContent({message:"one single entry for each item only",severity:"error",open:true});
           flag = false;
           return;
         }
@@ -213,7 +216,7 @@ import backenURL from "../../utils/backend";
           (pd) => pd.p_id === listItem.p_id
         );
         if(listItem.quantity>productList[myProduct].quantity){
-            console.log("Error: "+listItem.label+" quantity must be less than "+productList[myProduct].quantity);
+          setMessageContent({message:"Error: "+listItem.label+" quantity must be less than "+productList[myProduct].quantity,severity:"error",open:true});
             flag=false
             return;
         }

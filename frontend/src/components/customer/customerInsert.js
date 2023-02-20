@@ -5,19 +5,19 @@ import backenURL from '../../utils/backend';
 
 
 const re = /^[0-9\b]+$/;
-function CustomerInsertPage({callback,row,task}) {
+function CustomerInsertPage({callback,row,task,setMessageContent}) {
     const [name, setName] = useState(row?row.name:'');
     const [mobile, setMobile] = useState(row?row.mobile.toString():'');
 
     async function handleClick(e) {
         e.preventDefault();
         if (name.length < 4) {
-            console.log('Enter your name properly');
+            setMessageContent({message:"Enter your name properly",severity:"error",open:true});
             return;
         }
         if (mobile.length !== 10) {
-            
-            console.log('Enter your 10 digit mobile number');
+            setMessageContent({message:"Enter your 10 digit mobile number",severity:"error",open:true});
+
             return;
         }
 

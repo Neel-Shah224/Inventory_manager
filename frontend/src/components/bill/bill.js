@@ -31,7 +31,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 //imported pages
 import GenerateBill from "./generateBill";
 
-function Bill() {
+function Bill({setMessageContent}) {
   //selling orders data's
   const [myPreviousBills, setMyPreviousBills] = useState([]);
   // open (add new)/update selling order dialog box
@@ -82,10 +82,10 @@ function Bill() {
 
   function AddNewSellingOrder(error, newSellingOrder, task) {
     if (error) {
-      //TODO: do needful to alert user about error
+      setMessageContent({message:error,severity:"error",open:true});
     } else {
         setMyPreviousBills(myPreviousBills.concat(newSellingOrder));
-     
+     setMessageContent({message:"New Selling Order Generated",severity:"success",open:true});
       handleClose();
       console.log("11")
     }
@@ -255,7 +255,7 @@ function Bill() {
           <GenerateBill
           sx={{maxWidth:1000}}
             callback={AddNewSellingOrder}
-            
+            setMessageContent={setMessageContent}
           />
         </Dialog>
 
