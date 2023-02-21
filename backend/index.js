@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 const corsOptions = {
     origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
+    credentials: true,             //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 }
 
@@ -33,6 +33,7 @@ app.use(purchaseOrderRoutes)
 app.use(stockRoutes)
 app.use(sellingRoute)
 
-app.listen(process.env.PORT || 5000, () => {
-    console.log('app is running on 5000')
+const myport=process.env.PORT || 5000
+app.listen(myport, () => {
+    console.log('app is running on '+myport)
 })
