@@ -1,3 +1,3 @@
-const backenURL="https://stock-manager-neel.herokuapp.com"
+const backenURL="https://jittery-puce-moth.cyclic.app"
 
 export default backenURL
